@@ -24,21 +24,21 @@ pipeline {
         }
         stage('Init') {
             steps {
-                withAWS(credentials: 'aws-creds', region: 'us-east-1') {
+                withAWS(credentials: 'aws-key', region: 'us-east-1') {
                 sh 'terraform  init'
                 }
             }
         }
         stage('Validate') {
             steps {
-                withAWS(credentials: 'aws-creds', region: 'us-east-1') {
+                withAWS(credentials: 'aws-key', region: 'us-east-1') {
                 sh 'terraform  validate'
                 }
             }
         }
         stage('Action') {
             steps {
-                withAWS(credentials: 'aws-creds', region: 'us-east-1') {
+                withAWS(credentials: 'aws-key', region: 'us-east-1') {
                     script {    
                         if (params.Terraform_Action == 'plan') {
                             sh "terraform  plan "
