@@ -53,5 +53,10 @@ pipeline {
                 }
             }
         }
+        stage('Show State') {
+            steps {
+                sh 'terraform show terraform.tfstate'
+            }
+        }
     }
 }
